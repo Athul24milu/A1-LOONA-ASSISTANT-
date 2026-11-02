@@ -98,6 +98,7 @@ public:
     LoonaBoard() : boot_button_(BOOT_BUTTON_GPIO) {
         InitializeButtons();
         InitializeMcpTools();
+        GetAudioCodec()->SetOutputVolume(100);
     }
 
     virtual Led* GetLed() override {

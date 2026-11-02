@@ -4,7 +4,7 @@
 #include <driver/gpio.h>
 
 #define AUDIO_INPUT_SAMPLE_RATE  16000
-#define AUDIO_OUTPUT_SAMPLE_RATE 24000
+#define AUDIO_OUTPUT_SAMPLE_RATE 16000
 
 // Duplex I2S Mode (Sharing BCLK and WS between Amp and Mic)
 // Comment out AUDIO_I2S_METHOD_SIMPLEX to enable Duplex
