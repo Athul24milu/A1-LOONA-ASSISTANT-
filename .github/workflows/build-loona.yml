@@ -1,0 +1,30 @@
+name: Build Loona
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build Loona Firmware
+    runs-on: ubuntu-latest
+    container:
+      image: espressif/idf:release-v6.1
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Loona
+        shell: bash
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          source "$IDF_PATH/export.sh"
+          python scripts/build.py loona --name loona --zip
+
+      - name: Upload Loona Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: loona-firmware
+          path: releases/*.zip
